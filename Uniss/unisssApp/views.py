@@ -8,6 +8,9 @@ def hola_mundo(request):
 
 
 
+def clase(request):
+    
+    return render(request,'Clase/Clase.html')
 
 
 
