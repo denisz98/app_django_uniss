@@ -6,13 +6,11 @@ class FormularioClase(forms.Form):
    nombreClase =  forms.CharField(required=True)
    agno =  forms.CharField(required=True)
    disciplina =  forms.ModelChoiceField (label = "Disciplina",queryset=Disciplina.objects.all())
-   responsable =  forms.ModelChoiceField (label ="Profesor",queryset=Profesor.objects.all())
-#    disciplina =  forms.CharField(required=True)
+   profesor =  forms.ModelChoiceField (label ="Profesor",queryset=Profesor.objects.all())
     
 class FormularioProfesor(forms.Form):
     
-   nombreClase =forms.ModelChoiceField (label = "Clase",queryset=Clase.objects.all())
-   nombreProfesor =  forms.CharField(required=True)
+   nombreProfesor =forms.ModelChoiceField (label = "Clase",queryset=Clase.objects.all())
    ci =  forms.CharField(label = "Carnet identidad",required=True)
    telefono =  forms.CharField(label ="Teléfono",required=True)
    grado_cientifico =  forms.CharField(label = "Grado científico",required=True)
