@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from unisssApp.models import Clase,Profesor,Estudiante
-from unisssApp.form import FormularioClase, FormularioProfesor
+from unisssApp.form import FormularioClase, FormularioProfesor,FormularioEstudiante
 # Create your views here.
 
 def hola_mundo(request):
@@ -11,7 +11,6 @@ def hola_mundo(request):
 
 def clase(request):
     clases = Clase.objects.all()
-    print('lolo',clases)
     
     return render(request,'Clase/Clase.html',{"otro_nombre":clases})
 
@@ -75,12 +74,42 @@ def insertar_profesor(request):
 
 
 
-
-
-
-
-
-
-
-
 # ==========================================================Estudiante====================================================
+def estudiante(request):
+
+    estudiantes = Estudiante.objects.all()
+    estudiante = []
+    for i in estudiantes:
+        e = []
+        for j in i.clase.all():
+            e.append(Clase.objects.get(pk =j.idClase))
+        print(e)
+        estudiante.append({'idEstudiante':i.idEstudiante,'nombre':i.nombre,"ci":i.ci,'telefono':i.telefono,'direccion':i.direccion,'agno_academico':i.agno_academico,'clase':e})
+
+    return render(request,'Estudiante/Estudiante.html',{"estudiante":estudiante})
+
+
+def insertar_estudiante(request):
+    if request.method == 'POST':
+        form = FormularioEstudiante(request.POST)
+        if form.is_valid():
+            estudiante = Estudiante()
+            estudiante.nombre_clase = form.cleaned_data['nombreClase']
+            estudiante.nombre = form.cleaned_data['nombre']
+            estudiante.ci = form.cleaned_data['ci']
+            estudiante.direccion = form.cleaned_data['direccion']
+            estudiante.telefono = form.cleaned_data['telefono']
+            estudiante.agno_academico = form.cleaned_data['agno_academico']
+
+            estudiante.save()
+
+            estudiante.clase.set(estudiante.nombre_clase)
+
+            return redirect('/estudiante/')
+    else:
+        form = FormularioEstudiante()
+
+    return render(request, 'Estudiante/insertar.html', {'miformulario': form})
+
+
+

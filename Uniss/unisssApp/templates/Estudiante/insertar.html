@@ -1,4 +1,4 @@
- {% extends 'base/base.html' %} {% block sidebar %}{% load static %}
+{% extends 'base/base.html' %} {% block content %} {% block sidebar %}{% load static %}
 <div class="page-sidebar-wrapper ">
     <div class="page-sidebar navbar-collapse collapse ">
         <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed " data-keep-expanded="false " data-auto-scroll="true " data-slide-speed="200 " style="padding-top: 20px ">
@@ -20,7 +20,7 @@
             <!----------------------------- PROFESOR -------------------------------------->
 
             <li class="nav-item start ">
-                <a href="# " class="nav-link nav-toggle ">
+                <a href="{% url 'Profesor' %} " class="nav-link nav-toggle ">
                     <i class="icon-users "></i>
                     <span class="title ">Profesor</span>
                 </a>
@@ -31,7 +31,7 @@
 
 
             <li class="nav-item start ">
-                <a href="#" class="nav-link nav-toggle ">
+                <a href="{% url 'Estudiante' %} " class="nav-link nav-toggle ">
                     <i class="fa fa-graduation-cap "></i>
                     <span class="title ">Estudiante</span>
                 </a>
@@ -41,22 +41,27 @@
         </ul>
     </div>
 </div>
-{% endblock sidebar %}{% block content %} {% load crispy_forms_tags %}
+{% endblock sidebar %} {% load crispy_forms_tags %}
 
 
 
 <div class="page-content-wrapper" style="background: #4276A4;">
     <div class="page-content">
 
-        <div class="portlet light bordered" style="width: 250px; margin: auto;">
+
+
+
+
+
+        <div class="portlet light bordered" style="width: 40%; margin: auto;">
             <div class="portlet-title">
                 <div class="caption font-red-sunglo">
-                    <i class="fa fa-book font-red"></i>
-                    <span class="caption-subject bold uppercase"> Clase</span>
+                    <i class="fa fa-graduation-cap font-red"></i>
+                    <span class="caption-subject bold uppercase"> Estudiante</span>
 
                 </div>
                 <div style="text-align: right;">
-                    <a class="btn green float-right" style="height: 25px; padding: 0px 5px 2px 5px ; margin: 10px 0px 2px 0px; " href="{% url 'Clase' %} ">Atrás<i class="fa fa-reply"></i></a>
+                    <a class="btn green float-right" style="height: 25px; padding: 0px 5px 2px 5px ; margin: 10px 0px 2px 0px; " href="{% url 'Estudiante' %} ">Atrás<i class="fa fa-reply"></i></a>
 
                 </div>
 
@@ -83,6 +88,12 @@
 
     </div>
 </div>
+
+
+
+
+
+
 
 
 
