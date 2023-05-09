@@ -1,4 +1,4 @@
- {% extends 'UniversityApp/base/base.html' %} {% block sidebar %}{% load static %}
+ {% extends 'base/base.html' %} {% block sidebar %}{% load static %}
 <div class="page-sidebar-wrapper ">
     <div class="page-sidebar navbar-collapse collapse ">
         <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed " data-keep-expanded="false " data-auto-scroll="true " data-slide-speed="200 " style="padding-top: 20px ">
@@ -21,7 +21,7 @@
 
             <li class="nav-item start ">
                 <a href="# " class="nav-link nav-toggle ">
-                    <i class="icon-users "></i>
+                    <i class=" fa fa-users "></i>
                     <span class="title ">Profesor</span>
                 </a>
             </li>
@@ -41,48 +41,6 @@
         </ul>
     </div>
 </div>
-{% comment %} <div class="page-sidebar-wrapper ">
-    <div class="page-sidebar navbar-collapse collapse ">
-        <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed " data-keep-expanded="false " data-auto-scroll="true " data-slide-speed="200 " style="padding-top: 20px ">
-            <li class="sidebar-toggler-wrapper hide ">
-                <div class="sidebar-toggler ">
-                    <span></span>
-                </div>
-            </li>
-
-
-            <!---------------------- CLASES ----------------------------->
-
-            <li class="nav-item start ">
-                <a href="{% url 'Clase' %} " class="nav-link nav-toggle ">
-                    <i class="fa fa-book "></i>
-                    <span class="title ">Clase</span>
-                </a>
-            </li>
-            <!----------------------------- PROFESOR -------------------------------------->
-
-            <li class="nav-item start ">
-                <a href="{% url 'Profesor' %} " class="nav-link nav-toggle ">
-                    <i class="icon-users "></i>
-                    <span class="title ">Profesor</span>
-                </a>
-            </li>
-
-
-            <!------------------------------------ ESTUDIANTE ----------------------------->
-
-
-            <li class="nav-item start ">
-                <a href="{% url 'Estudiante' %} " class="nav-link nav-toggle ">
-                    <i class="fa fa-graduation-cap "></i>
-                    <span class="title ">Estudiante</span>
-                </a>
-            </li>
-
-
-        </ul>
-    </div>
-</div> {% endcomment %}
 {% endblock sidebar %}{% block content %} {% load crispy_forms_tags %}
 
 
@@ -99,7 +57,7 @@
             <div class="portlet-title">
                 <div class="caption font-red-sunglo">
                     <i class="fa fa-book font-red"></i>
-                    <span class="caption-subject bold uppercase"> Clase</span>
+                    <span class="caption-subject bold uppercase"> Profesor</span>
 
                 </div>
                 <div style="text-align: right;">
@@ -119,7 +77,12 @@
                         <div class="form-body">
 
 
-                            {{miformulario|crispy}}
+                            {% for i in miformulario %}
+                                <div class="form-group">
+                                    {{ i.label }}
+                                    {{ i }}
+                                </div>
+                            {% endfor %}
 
                         </div>
                         <input type="submit" class="btn blue" style="height: 25px; padding: 0px 10px 2px 10px ;margin: 0px 20px 2px 10px; " value="Guardar">

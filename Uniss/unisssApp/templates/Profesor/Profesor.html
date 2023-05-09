@@ -94,10 +94,10 @@
                                     <td class="center" style="padding:0px 0px 0px 20px ;"> {{i.grado_cientifico}} </td>
                                     <td class="center" style="padding:0px 0px 0px 20px ;"> {{i.categoria_docente}} </td>
                                     <td style="text-align: center;">
-                                        <a class="btn blue" style="height: 25px; padding: 2px 5px 2px 5px ;" href="#"> Editar </a>
+                                        <a class="btn blue" style="height: 25px; padding: 2px 5px 2px 5px ;" href="{% url 'editar_profesor' i.idProfesor %}"> Editar </a>
                                     </td>
                                     <td style="text-align: center;">
-                                        <a href="#" class="btn red" style="height: 25px; padding: 2px 5px 2px 5px ;" onclick="return confirm('Confirmar eliminación');">Eliminar</a>
+                                        <a href="{% url 'eliminar_profesor' i.idProfesor %}" class="btn red" style="height: 25px; padding: 2px 5px 2px 5px ;" onclick="return confirm('Confirmar eliminación');">Eliminar</a>
                                     </td>
                                 </tr>
                                 {% endfor %}

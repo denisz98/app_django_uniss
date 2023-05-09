@@ -10,7 +10,7 @@ class FormularioClase(forms.Form):
     
 class FormularioProfesor(forms.Form):
     
-   nombreProfesor =forms.ModelChoiceField (label = "Clase",queryset=Clase.objects.all())
+   nombreProfesor =forms.CharField (label = "Nombre",required=True)
    ci =  forms.CharField(label = "Carnet identidad",required=True)
    telefono =  forms.CharField(label ="Teléfono",required=True)
    grado_cientifico =  forms.CharField(label = "Grado científico",required=True)
